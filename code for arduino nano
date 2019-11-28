@@ -1,0 +1,29 @@
+#include<Servo.h>
+
+Servo esc3;
+Servo esc2;                                                   
+int throttle_channel;   
+int throttle_channel2;             
+
+
+void setup() 
+{ 
+  Serial.begin(9600);
+  pinMode(throttle_channel, OUTPUT);
+  esc2.attach(3);
+  esc3.attach(5);
+  throttle_channel2 = 2000;
+  throttle_channel = 2000;
+  esc2.writeMicroseconds(throttle_channel2);
+  esc3.writeMicroseconds(throttle_channel);
+  delay(5000);
+
+}
+
+void loop(){
+
+  throttle_channel = 1540; //course lock
+    throttle_channel2 = 1860; //gps
+  esc3.writeMicroseconds(throttle_channel);
+  esc2.writeMicroseconds(throttle_channel2);
+}
